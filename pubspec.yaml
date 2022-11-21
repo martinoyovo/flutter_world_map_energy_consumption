@@ -1,0 +1,44 @@
+name: codewars2
+description: My new Flutter app
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  bloc: ^8.1.0
+  flex_color_scheme: ^6.1.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  gap: ^2.0.1
+  intl: ^0.17.0
+  provider: ^6.0.4
+  syncfusion_flutter_maps: ^20.3.57
+
+dev_dependencies:
+  bloc_test: ^9.1.0
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+  very_good_analysis: ^3.1.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+
+  fonts:
+    - family: Graphik
+      fonts:
+        - asset: assets/fonts/Graphik-Black-Trial.otf
+        - asset: assets/fonts/Graphik-Bold-Trial.otf
+        - asset: assets/fonts/Graphik-Extralight-Trial.otf
+        - asset: assets/fonts/Graphik-Medium-Trial.otf
+        - asset: assets/fonts/Graphik-Regular-Trial.otf
+        - asset: assets/fonts/Graphik-Semibold-Trial.otf
+        - asset: assets/fonts/Graphik-Super-Trial.otf
+        - asset: assets/fonts/Graphik-Thin-Trial.otf
+
