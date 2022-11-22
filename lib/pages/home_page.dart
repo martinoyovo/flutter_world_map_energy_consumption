@@ -5,37 +5,40 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+import 'package:codewars2/l10n/l10n.dart';
+import 'package:codewars2/provider/app_provider.dart';
+import 'package:codewars2/screens/map_screen.dart';
 import 'package:codewars2/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:codewars2/l10n/l10n.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const HomeView();
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController _searchController =
+  TextEditingController(text: 'Search country or city');
+
+  @override
+  void initState() {
+    context.read<AppProvider>().readJson();
+    super.initState();
   }
-}
-
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
-
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  final TextEditingController _searchController = TextEditingController(text: "Search Country/city");
 
   @override
   Widget build(BuildContext context) {
+    final appProvider = context.watch<AppProvider>();
     final l10n = context.l10n;
     SizeConfig.init(context);
     final theme = Theme.of(context);
-
+    appProvider.readJson();
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       body: ListView(
@@ -45,7 +48,9 @@ class _HomeViewState extends State<HomeView> {
             color: theme.primaryColor,
             child: Align(
               child: Text(l10n.energyConsumption, textAlign: TextAlign.center,
-                  style: theme.textTheme.headline1?.copyWith(color: theme.cardColor),
+                style: theme.textTheme.headline1?.copyWith(
+                  color: theme.cardColor,
+                ),
               ),
             ),
           ),
@@ -94,6 +99,7 @@ class _HomeViewState extends State<HomeView> {
                                 Text('Togo')
                               ],
                             ),
+                            Text(appProvider.world_data.toString())
                           ],
                         ),
                       )
@@ -102,7 +108,11 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 Expanded(
                   flex: 8,
-                  child: Container(),
+                  child: SizedBox(
+                    width: 400,
+                    height: 200,
+                    child: MapScreen(),
+                  ),
                 )
               ],
             ),
