@@ -28,17 +28,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    context.read<AppProvider>().readJson();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final appProvider = context.watch<AppProvider>();
     final l10n = context.l10n;
     SizeConfig.init(context);
     final theme = Theme.of(context);
-    appProvider.readJson();
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       body: ListView(
@@ -99,20 +96,15 @@ class _HomePageState extends State<HomePage> {
                                 Text('Togo')
                               ],
                             ),
-                            Text(appProvider.world_data.toString())
                           ],
                         ),
                       )
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   flex: 8,
-                  child: SizedBox(
-                    width: 400,
-                    height: 200,
-                    child: MapScreen(),
-                  ),
+                  child: MapScreen(),
                 )
               ],
             ),

@@ -1,5 +1,9 @@
 
+import 'dart:convert';
+
+import 'package:codewars2/models/region.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
 
@@ -12,57 +16,81 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
 
-// Fetch content from the json file
+  final List<Region> _world_data = [];
 
+  late MapShapeSource dataSource;
+
+  Future<void> readJson() async {
+    final response = await rootBundle.loadString('assets/world_data.json');
+    final data = await json.decode(response) as Map;
+
+    data.entries.forEach((MapEntry<dynamic, dynamic> m) {
+      final data = m.value['data'] as List;
+      final recentData = data.where(
+        (e) => e['year'] as double >= 2017,
+      );
+
+      if(m.key.toString() != '') {
+        final mappedData = Region.fromJson({
+          'name': m.key.toString(),
+          'data': recentData
+        });
+
+
+
+        setState(() {
+          _world_data.add(mappedData);
+        });
+      }
+    });
+
+    setState(() {
+      dataSource = MapShapeSource.asset(
+        'assets/world_map.json',
+        shapeDataField: 'name',
+        dataCount: _world_data.length,
+        primaryValueMapper: (int index) {
+          return _world_data[index].name!;
+        },
+        shapeColorValueMapper: (int index) => data[index].count,
+        shapeColorMappers: [
+          MapColorMapper(
+            from: 0,
+            to: 100,
+            color: Colors.red,
+            minOpacity: 0.2,
+            maxOpacity: 0.4,
+          ),
+          MapColorMapper(
+            from: 101,
+            to: 300,
+            color: Colors.green,
+            minOpacity: 0.4,
+            maxOpacity: 0.6,
+          ),
+        ],
+        //shapeColorValueMapper: (int index) => Color(int.parse(_world_data[index].name!))
+      );
+    });
+  }
 
   @override
   void initState() {
-    data = const <Model>[
-      Model('Asia', Color.fromRGBO(60, 120, 255, 0.8)),
-      Model('Africa', Color.fromRGBO(51, 102, 255, 0.8)),
-      Model('Europe', Color.fromRGBO(0, 57, 230, 0.8)),
-      Model('South America', Color.fromRGBO(0, 51, 204, 0.8)),
-      Model('Australia', Color.fromRGBO(0, 45, 179, 0.8)),
-      Model('North America', Color.fromRGBO(0, 38, 153, 0.8))
-    ];
-
-    dataSource = MapShapeSource.asset(
-      'assets/world_map.json',
-      shapeDataField: 'continent',
-      dataCount: data.length,
-      primaryValueMapper: (int index) => data[index].country,
-      shapeColorValueMapper: (int index) => data[index].color,
-    );
+    readJson();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Container(
-            height: 350,
-            child: Padding(
-              padding: EdgeInsets.only(left: 15, right: 15),
-              child: SfMaps(
-                layers: <MapLayer>[
-                  MapShapeLayer(
-                    source: dataSource,
-                  ),
-                ],
-              ),
-            ),
-          )),
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15),
+      child: SfMaps(
+        layers: <MapLayer>[
+          MapShapeLayer(
+            source: dataSource,
+          ),
+        ],
+      ),
     );
   }
-}
-
-late List<Model> data;
-late MapShapeSource dataSource;
-
-class Model {
-  const Model(this.country, this.color);
-
-  final String country;
-  final Color color;
 }
