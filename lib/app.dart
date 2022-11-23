@@ -1,4 +1,5 @@
 
+import 'package:codewars2/gov/pages/landing.dart';
 import 'package:codewars2/pages/home_page.dart';
 import 'package:codewars2/l10n/l10n.dart';
 import 'package:codewars2/provider/app_provider.dart';
@@ -19,7 +20,7 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: FlexThemeData.light(
-          scheme: FlexScheme.amber,
+          scheme: FlexScheme.blue,
           surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
           blendLevel: 9,
           subThemesData: const FlexSubThemesData(
@@ -31,7 +32,7 @@ class App extends StatelessWidget {
         ),
         themeMode: ThemeMode.light,
         darkTheme: FlexThemeData.dark(
-          scheme: FlexScheme.amber,
+          scheme: FlexScheme.custom,
           surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
           blendLevel: 15,
           subThemesData: const FlexSubThemesData(
@@ -42,7 +43,7 @@ class App extends StatelessWidget {
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const HomePage(),
+        home: const Landing(),
       ),
     );
   }

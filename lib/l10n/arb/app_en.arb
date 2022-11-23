@@ -1,4 +1,11 @@
 {
     "@@locale": "en",
-    "energyConsumption": "Energy consumption per capita"
+    "energyConsumption": "Energy consumption per capita",
+    "govAppTitle": "ENERGINT",
+    "govAppDescription": "The world's largest cities energy estimation platform",
+    "govAppLogin": "Login to continue",
+    "email": "Email",
+    "password": "Password",
+    "next": "Continue",
+    "login": "Login"
 }

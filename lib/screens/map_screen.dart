@@ -52,23 +52,7 @@ class _MapScreenState extends State<MapScreen> {
         primaryValueMapper: (int index) {
           return _world_data[index].name!;
         },
-        shapeColorValueMapper: (int index) => data[index].count,
-        shapeColorMappers: [
-          MapColorMapper(
-            from: 0,
-            to: 100,
-            color: Colors.red,
-            minOpacity: 0.2,
-            maxOpacity: 0.4,
-          ),
-          MapColorMapper(
-            from: 101,
-            to: 300,
-            color: Colors.green,
-            minOpacity: 0.4,
-            maxOpacity: 0.6,
-          ),
-        ],
+        //shapeColorValueMapper: (int index) => data[index].count,
         //shapeColorValueMapper: (int index) => Color(int.parse(_world_data[index].name!))
       );
     });

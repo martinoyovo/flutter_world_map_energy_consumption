@@ -104,7 +104,10 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const Expanded(
                   flex: 8,
-                  child: MapScreen(),
+                  child: SizedBox(
+                    height: 300,
+                      width: 300,
+                      child: MapScreen()),
                 )
               ],
             ),
