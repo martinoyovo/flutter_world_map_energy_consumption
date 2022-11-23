@@ -7,5 +7,8 @@
     "email": "Email",
     "password": "Password",
     "next": "Continue",
-    "login": "Login"
+    "login": "Login",
+    "uploadCity": "Upload a satellite image of a city to see the energy consumption",
+    "uploadText": "Upload city satellite image",
+    "uploadProceed": "Process"
 }
