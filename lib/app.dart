@@ -3,6 +3,7 @@ import 'package:codewars2/gov/pages/landing.dart';
 import 'package:codewars2/pages/home_page.dart';
 import 'package:codewars2/l10n/l10n.dart';
 import 'package:codewars2/provider/app_provider.dart';
+import 'package:codewars2/screens/map_screen.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,7 @@ class App extends StatelessWidget {
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const Landing(),
+        home: const MapScreen(),
       ),
     );
   }
