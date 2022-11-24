@@ -33,7 +33,7 @@ class Landing extends StatelessWidget {
 
                   Gap(getProportionateScreenHeight(40)),
 
-                  Text(l10n.govAppTitle, style: theme.textTheme.headline1
+                  Text("ENERGINT", style: theme.textTheme.headline1
                       ?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -42,7 +42,7 @@ class Landing extends StatelessWidget {
 
                   Gap(getProportionateScreenHeight(30)),
 
-                  Text(l10n.govAppDescription, style: theme.textTheme.headline3
+                  Text("The world's largest cities energy estimation platform", style: theme.textTheme.headline3
                       ?.copyWith(
                     fontWeight: FontWeight.w700,
                     color: buttonColor,
@@ -62,7 +62,7 @@ class Landing extends StatelessWidget {
                           vertical: 20, horizontal: 20,),
                       shape: const StadiumBorder(),
                     ),
-                    child: Text(l10n.govAppLogin,
+                    child: Text("Login to continue",
                       style: theme.textTheme.titleLarge
                         ?.copyWith(color: bgColor, fontWeight: FontWeight.w600,
                       ),),

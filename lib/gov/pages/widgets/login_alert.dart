@@ -40,18 +40,18 @@ class _LoginAlertState extends State<LoginAlert> {
                   decoration: const BoxDecoration(
                     color: bgColor
                   ),
-                    child: Center(child: Text(l10n.login.toUpperCase(), style:
+                    child: Center(child: Text("Login", style:
                     theme.textTheme.headline4?.copyWith(color: Colors.white,
                         fontWeight: FontWeight.bold,),),),
                 ),
                 const Gap(40),
                 _textField(
-                    hint: l10n.email,
+                    hint: "Email",
                     controller: emailController,
                 ),
                 const Gap(40),
                 _textField(
-                    hint: l10n.password,
+                    hint: "Password",
                     controller: passwordController,
                     isPassword: true,
                 ),
@@ -70,7 +70,7 @@ class _LoginAlertState extends State<LoginAlert> {
                       padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 20,),
                     ),
-                    child: Text(l10n.next,
+                    child: Text("Continue",
                       style: theme.textTheme.titleLarge
                           ?.copyWith(color: Colors.white, fontWeight: FontWeight.w600,
                       ),),
