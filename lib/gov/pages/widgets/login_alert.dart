@@ -15,7 +15,7 @@ class LoginAlert extends StatefulWidget {
 class _LoginAlertState extends State<LoginAlert> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  bool obscureText = true;
+  bool obscureText = false;
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -48,12 +48,14 @@ class _LoginAlertState extends State<LoginAlert> {
                 _textField(
                     hint: "Email",
                     controller: emailController,
+                    obscureText: false
                 ),
                 const Gap(40),
                 _textField(
                     hint: "Password",
                     controller: passwordController,
                     isPassword: true,
+                  obscureText: obscureText
                 ),
                 const Spacer(),
                 SizedBox(
@@ -87,6 +89,7 @@ class _LoginAlertState extends State<LoginAlert> {
 
   Widget _textField({
     required String hint,
+    required bool obscureText,
     required TextEditingController controller,
     bool? isPassword,}) {
 
