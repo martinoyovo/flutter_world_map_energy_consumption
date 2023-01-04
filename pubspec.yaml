@@ -19,7 +19,7 @@ dependencies:
   path_provider: ^2.0.11
   provider: ^6.0.4
   #string_to_color: ^1.0.2
-  syncfusion_flutter_maps: ^20.3.57
+  syncfusion_flutter_maps: ^20.4.42
 
 dev_dependencies:
   bloc_test: ^9.1.0
