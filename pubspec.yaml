@@ -16,7 +16,7 @@ dependencies:
   gap: ^2.0.1
   intl: ^0.17.0
   lottie: ^2.0.0
-  path_provider: ^2.0.11
+  path_provider: ^2.0.12
   provider: ^6.0.4
   #string_to_color: ^1.0.2
   syncfusion_flutter_maps: ^20.3.57
